@@ -1,0 +1,24 @@
+<div
+  [routerLink]="['/shop/product', 1]"
+  class="cursor-pointer w-[250px] aspect-[5/7] shadow-xl p-5 hover:shadow-2xl transition-shadow border-solid border-stone-300 border bg-slate-50"
+>
+  <div class="w-full aspect-square overflow-hidden">
+    <img
+      src="https://www.thenorthface.com/content/publish/caas/v1/media/362282/data/1f27995065aeb23dd91c90b709bacc8c/230907-hp-secondary-1-item-denim-pack-jacket-m.jpg"
+      alt="jacket"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="text-xl font-bold -mb-1 mt-4">Raincoat</div>
+  <div class="text-md text-stone-600">Outdoor/ Autumn</div>
+
+  <div class="flex justify-between items-center mt-auto">
+    {{ "25" | currency }}
+    <button
+      class="w-10 flex justify-center items-center aspect-square bg-opacity-20 bg-yellow-500 text-yellow-500 rounded-full hover:text-slate-50 hover:bg-opacity-100 transition-all"
+    >
+      <mat-icon class="scale-75">shopping_bag</mat-icon>
+    </button>
+  </div>
+</div>

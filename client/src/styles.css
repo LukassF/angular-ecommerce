@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,html{
+    margin:0;
+    font-family: 'Ubuntu', sans-serif;
+    height: 100%;
+
+    scrollbar-width: thin;
+    scrollbar-color: grey transparent ;
+
+
+        &::-webkit-scrollbar {
+            width: 7px;
+          }
+      
+          &::-webkit-scrollbar-track-piece {
+            background-color: transparent;
+          }
+      
+          &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: grey;
+          }
+}
+
+
