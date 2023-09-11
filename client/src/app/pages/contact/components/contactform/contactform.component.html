@@ -6,7 +6,7 @@
     Share your thoughts with us!
   </span>
   <form
-    class="flex flex-col px-4 sm:px-0 gap-2 w-full xl:w-1/2 [&>*]:bg-slate-200 [&>*]:py-3 [&>*]:px-5 [&>*]:outline-none"
+    class="flex flex-col px-4 sm:px-0 gap-2 w-full xl:w-1/2 [&>input]:bg-slate-200 [&>input]:py-3 [&>input]:px-5 [&>input]:outline-none"
   >
     <input type="text" placeholder="Enter your name" />
     <input type="email" placeholder="Enter your email adress" />
@@ -14,7 +14,12 @@
       placeholder="Enter your message"
       cols="30"
       rows="10"
-      class="resize-none"
+      class="resize-none bg-slate-200 py-3 px-5 outline-none"
     ></textarea>
+    <button
+      class="font-semibold border-2 py-3 px-10 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white transition-all"
+    >
+      Send
+    </button>
   </form>
 </section>

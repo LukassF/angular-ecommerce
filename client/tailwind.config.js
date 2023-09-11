@@ -10,8 +10,7 @@ module.exports = {
       },
 
       gridTemplateColumns: {
-        footer: "2fr 1fr 1fr 2fr",
-        footerMed: "2fr 1fr 1fr",
+        productInfo: "2fr 3fr",
       },
       screens: {
         xs: "450px",

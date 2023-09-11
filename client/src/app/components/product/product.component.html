@@ -1,20 +1,32 @@
 <div
-  [routerLink]="['/shop/product', 1]"
-  class="cursor-pointer w-[250px] aspect-[5/7] shadow-xl p-5 hover:shadow-2xl transition-shadow border-solid border-stone-300 border bg-slate-50"
+  [routerLink]="['/shop/product', product.id]"
+  *ngIf="product"
+  class="cursor-pointer w-full xs:w-[250px] aspect-[5/7] shadow-xl p-5 hover:shadow-2xl transition-shadow border-solid border-stone-300 border bg-slate-50"
 >
-  <div class="w-full aspect-square overflow-hidden">
+  <div class="w-full aspect-square overflow-hidden relative">
     <img
-      src="https://www.thenorthface.com/content/publish/caas/v1/media/362282/data/1f27995065aeb23dd91c90b709bacc8c/230907-hp-secondary-1-item-denim-pack-jacket-m.jpg"
-      alt="jacket"
+      [src]="product.image"
+      [alt]="product.name"
       class="w-full h-full object-cover"
     />
+
+    <i
+      *ngIf="product.gender === 'female'"
+      class="fa fa-female text-pink-500 text-xl absolute top-3 right-3"
+    ></i>
+    <i
+      *ngIf="product.gender === 'male'"
+      class="fa fa-male text-blue-400 text-xl absolute top-3 right-3"
+    ></i>
   </div>
 
-  <div class="text-xl font-bold -mb-1 mt-4">Raincoat</div>
-  <div class="text-md text-stone-600">Outdoor/ Autumn</div>
+  <div class="text-xl font-medium -mb-1 mt-4 truncate">{{ product.name }}</div>
+  <div *ngIf="categoriesUpperCase" class="text-md text-stone-600 truncate">
+    {{ categoriesUpperCase.join(", ") }}
+  </div>
 
-  <div class="flex justify-between items-center mt-auto">
-    {{ "25" | currency }}
+  <div class="flex justify-between items-center mt-3 text-md">
+    {{ product.price | currency }}
     <button
       class="w-10 flex justify-center items-center aspect-square bg-opacity-20 bg-yellow-500 text-yellow-500 rounded-full hover:text-slate-50 hover:bg-opacity-100 transition-all"
     >

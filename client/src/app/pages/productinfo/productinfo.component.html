@@ -1,3 +1,80 @@
-<main class="min-h-screen overflow-x-hidden overflow-y-auto">
-  <div class="pt-20">Hi hello</div>
+<main
+  *ngIf="product"
+  class="overflow-x-hidden overflow-y-auto pt-20 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-productInfo"
+>
+  <article class="sm:p-10 flex justify-center items-center">
+    <div class="w-full aspect-[2/1] lg:aspect-square overflow-hidden">
+      <img
+        [src]="product.image"
+        alt="product-image"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
+  </article>
+  <article class="p-5 sm:p-10">
+    <div class="w-full h-full flex flex-col justify-center">
+      <h3>{{ product.gender.toUpperCase() }}</h3>
+
+      <span class="text-4xl sm:text-5xl font-bold">{{ product.name }}</span>
+
+      <span class="text-xl sm:text-3xl mt-3 font-medium text-stone-700">{{
+        product.price | currency
+      }}</span>
+
+      <select
+        class="w-[150px] h-[40px] p-2 border border-solid focus:border-stone-900 bg-slate-200 font-medium text-md mt-5"
+      >
+        <option>Extra Small</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+        <option>Extra Large</option>
+      </select>
+
+      <div class="flex gap-3 mt-3">
+        <input
+          type="number"
+          value="1"
+          [min]="1"
+          class="w-[50px] h-[40px] border border-solid focus:border-stone-900 bg-slate-200 font-medium text-md p-2 outline-none"
+        />
+        <button
+          class="h-[40px] px-8 font-semibold border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white transition-all"
+        >
+          Add to cart
+        </button>
+      </div>
+
+      <span class="text-lg sm:text-xl font-normal mt-5">Product Details</span>
+      <span class="text-xs sm:text-md text-stone-600 md:pe-20">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci fugit
+        dicta deleniti quasi laboriosam voluptatem harum, quo excepturi atque
+        dolores! Esse necessitatibus minus ipsum corporis et distinctio,
+        obcaecati quidem voluptas! Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Ipsam ab labore non provident distinctio et, doloribus
+        nesciunt vel recusandae quo, corporis sint est veniam officiis alias
+        culpa tempora. Temporibus, laudantium?
+      </span>
+    </div>
+  </article>
 </main>
+
+<article
+  class="my-20 w-full h-64 md:h-80 bg-[url('https://img.freepik.com/premium-photo/woman-beach-with-hat_863013-34738.jpg')] bg-cover bg-center"
+>
+  <div
+    class="w-full h-full backdrop-blur-zm flex flex-col gap-10 justify-center items-center bg-black bg-opacity-30 p-5 md:p-20"
+  >
+    <div
+      class="text-2xl xs:text-3xl md:text-5xl text-stone-100 font-bold text-center"
+    >
+      Up to <span class="text-yellow-500">50%</span> off on all headwear items!
+    </div>
+    <button
+      routerLink="/shop"
+      class="bg-yellow-500 bg-opacity-20 text-yellow-500 px-12 py-3 font-bold text-xl sm:text-2xl hover:bg-opacity-100 hover:text-slate-50 transition-all"
+    >
+      Explore more!
+    </button>
+  </div>
+</article>

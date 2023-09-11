@@ -20,6 +20,9 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { ContactinfoComponent } from "./pages/contact/components/contactinfo/contactinfo.component";
 import { ContactformComponent } from "./pages/contact/components/contactform/contactform.component";
 import { ProductinfoComponent } from "./pages/productinfo/productinfo.component";
+import { StoreService } from "./services/store.service";
+import { HttpClientModule } from "@angular/common/http";
+import { FiltersmenuComponent } from './pages/shop/components/filtersmenu/filtersmenu.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { ProductinfoComponent } from "./pages/productinfo/productinfo.component"
     ContactinfoComponent,
     ContactformComponent,
     ProductinfoComponent,
+    FiltersmenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +49,9 @@ import { ProductinfoComponent } from "./pages/productinfo/productinfo.component"
     BrowserAnimationsModule,
     MatIconModule,
     MatBadgeModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [StoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
