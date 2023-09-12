@@ -9,7 +9,21 @@ const supabase = createClient(
 );
 
 router.get("/", async (req, res) => {
-  const { data, error } = await supabase.from("clothes").select();
+  const filters = req.query.filters ? req.query.filters.split(",") : ["all"];
+  const types = req.query.types ? req.query.types.split(",") : ["all"];
+  const gender = req.query.gender
+    ? req.query.gender.split(",")
+    : ["male", "female"];
+
+  const { data, error } = await supabase
+    .from("clothes")
+    .select()
+    .in("gender", gender)
+    .contains("categories", filters)
+    .contains("type", types);
+
+  console.log(data);
+
   if (error) res.status(500).json(error);
   else res.json(data);
 });

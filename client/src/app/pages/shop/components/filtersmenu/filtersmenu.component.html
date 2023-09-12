@@ -1,1 +1,148 @@
-<aside class="w-full h-full shadow-xl"></aside>
+<aside
+  class="lg:w-full lg:h-full lg:shadow-xl px-5 lg:px-10 py-5 lg:py-20 flex flex-col gap-10"
+>
+  <article
+    class="flex flex-col [&>div]:flex [&>div]:gap-3 [&>div]:my-1 [&>div]:ps-3 [&>*]:accent-yellow-300"
+  >
+    <span class="text-xl font-medium mb-3">Categories</span>
+    <div>
+      <input
+        type="checkbox"
+        value="outdoor"
+        (change)="setCategory($event)"
+      /><label for>Outdoor</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="indoor"
+        (change)="setCategory($event)"
+      /><label>Indoor</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="casual"
+        (change)="setCategory($event)"
+      /><label>Casual</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="formal"
+        (change)="setCategory($event)"
+      /><label>Formal</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="autumn"
+        (change)="setCategory($event)"
+      /><label>Autumn</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="summer"
+        (change)="setCategory($event)"
+      /><label>Summer</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="winter"
+        (change)="setCategory($event)"
+      /><label>Winter</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="spring"
+        (change)="setCategory($event)"
+      /><label>Spring</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="sportswear"
+        (change)="setCategory($event)"
+      /><label>Sportswear</label>
+    </div>
+  </article>
+
+  <article
+    class="flex flex-col [&>div]:flex [&>div]:gap-3 [&>div]:my-1 [&>div]:ps-3 [&>*]:accent-yellow-300"
+  >
+    <span class="text-xl font-medium mb-3">Types</span>
+    <div>
+      <input
+        type="checkbox"
+        value="headwear"
+        (change)="setType($event)"
+      /><label>Headwear</label>
+    </div>
+    <div>
+      <input type="checkbox" value="torso" (change)="setType($event)" /><label
+        >Torso</label
+      >
+    </div>
+    <div>
+      <input type="checkbox" value="inner" (change)="setType($event)" /><label
+        >Inner</label
+      >
+    </div>
+    <div>
+      <input type="checkbox" value="outer" (change)="setType($event)" /><label
+        >Outer</label
+      >
+    </div>
+    <div>
+      <input type="checkbox" value="shoes" (change)="setType($event)" /><label
+        >Footwear/Shoes</label
+      >
+    </div>
+    <div>
+      <input type="checkbox" value="pants" (change)="setType($event)" /><label
+        >Pants</label
+      >
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="accessories"
+        (change)="setType($event)"
+      /><label>Accessories</label>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        value="underwear"
+        (change)="setType($event)"
+      /><label>Underwear</label>
+    </div>
+  </article>
+
+  <article class="flex gap-3">
+    <button
+      (click)="setGender('female')"
+      [ngClass]="{ 'bg-pink-500 text-stone-50': gender === 'female' }"
+      class="w-8 aspect-square border-2 border-pink-500 text-pink-500 text-lg hover:bg-pink-500 hover:text-stone-50 transition-all"
+    >
+      <i class="fa fa-female"></i>
+    </button>
+    <button
+      (click)="setGender('male')"
+      class="w-8 aspect-square border-2 border-blue-500 text-blue-500 text-lg hover:bg-blue-500 hover:text-stone-50 transition-all"
+      [ngClass]="{ 'bg-blue-500 text-stone-50': gender === 'male' }"
+    >
+      <i class="fa fa-male"></i>
+    </button>
+  </article>
+
+  <button
+    (click)="applyFilters()"
+    class="font-semibold border-2 py-3 px-10 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white transition-all"
+  >
+    Apply
+  </button>
+</aside>

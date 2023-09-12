@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+
 const clothesRouter = require("./routes/clothes");
 app.use("/api/clothes", clothesRouter);
 

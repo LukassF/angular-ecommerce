@@ -1,7 +1,7 @@
 <div
-  [routerLink]="['/shop/product', product.id]"
+  (click)="navigateToDetails($event)"
   *ngIf="product"
-  class="cursor-pointer w-full xs:w-[250px] aspect-[5/7] shadow-xl p-5 hover:shadow-2xl transition-shadow border-solid border-stone-300 border bg-slate-50"
+  class="cursor-pointer w-full aspect-[5/7] shadow-xl p-5 hover:shadow-2xl transition-shadow border-solid border-stone-300 border bg-slate-50"
 >
   <div class="w-full aspect-square overflow-hidden relative">
     <img
@@ -22,15 +22,19 @@
 
   <div class="text-xl font-medium -mb-1 mt-4 truncate">{{ product.name }}</div>
   <div *ngIf="categoriesUpperCase" class="text-md text-stone-600 truncate">
-    {{ categoriesUpperCase.join(", ") }}
+    {{
+      categoriesUpperCase.slice(0, categoriesUpperCase.length - 1).join(", ")
+    }}
   </div>
 
   <div class="flex justify-between items-center mt-3 text-md">
     {{ product.price | currency }}
     <button
+      id="add-to-cart"
+      (click)="onAddToCart()"
       class="w-10 flex justify-center items-center aspect-square bg-opacity-20 bg-yellow-500 text-yellow-500 rounded-full hover:text-slate-50 hover:bg-opacity-100 transition-all"
     >
-      <mat-icon class="scale-75">shopping_bag</mat-icon>
+      <mat-icon class="scale-75" id="add-to-cart">shopping_bag</mat-icon>
     </button>
   </div>
 </div>

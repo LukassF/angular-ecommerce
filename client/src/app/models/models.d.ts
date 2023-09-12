@@ -8,3 +8,15 @@ interface Product {
   in_stock: number;
   gender: "male" | "female" | "unisex";
 }
+
+interface Filters {
+  categories: Array<string>;
+  types: Array<string>;
+  gender: string | undefined;
+}
+
+type CartItem = Product & { quantity: number; size: string };
+
+interface Cart {
+  items: CartItem[];
+}

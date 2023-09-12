@@ -10,8 +10,16 @@ const STORE_URL = "http://localhost:5000/api";
 export class StoreService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllProducts(): Observable<Array<Product>> {
-    return this.httpClient.get<Array<Product>>(`${STORE_URL}/clothes`);
+  getAllProducts(
+    filters?: string,
+    types?: string,
+    gender?: string
+  ): Observable<Array<Product>> {
+    return this.httpClient.get<Array<Product>>(
+      `${STORE_URL}/clothes?filters=${filters ? filters : ""}&types=${
+        types ? types : ""
+      }&gender=${gender ? gender : ""}`
+    );
   }
 
   getProductById(id: string) {

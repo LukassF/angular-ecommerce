@@ -32,20 +32,8 @@
 
     <article
       *ngIf="fetchedProducts"
-      class="w-full flex flex-wrap justify-center items-start pt-10 md:pt-20 gap-8"
+      class="w-full grid grid-cols-1 lxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-evenly items-start pt-10 md:pt-20 gap-8"
     >
-      <app-product
-        *ngFor="let product of fetchedProducts; let index = index"
-        [product]="product"
-      ></app-product>
-      <app-product
-        *ngFor="let product of fetchedProducts; let index = index"
-        [product]="product"
-      ></app-product>
-      <app-product
-        *ngFor="let product of fetchedProducts; let index = index"
-        [product]="product"
-      ></app-product>
       <app-product
         *ngFor="let product of fetchedProducts; let index = index"
         [product]="product"

@@ -10,38 +10,92 @@
     >
   </div>
 
-  <div class="grid grid-cols-[1fr,4fr] divide-x-2">
-    <app-filtersmenu></app-filtersmenu>
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr,4fr] divide-x-2">
+    <app-filtersmenu
+      *ngIf="width > 1024"
+      (filtersObject)="applyFilters($event)"
+    ></app-filtersmenu>
 
-    <section class="min-h-screen overflow-hidden pt-10 p-10 md:p-20">
-      <div class="m-5 h-20 shadow-xl">
-        <!-- mat menu -->
-      </div>
-      <article
-        class="w-full flex flex-wrap justify-center items-start gap-8"
-        *ngIf="fetchedProducts"
+    <section class="min-h-screen overflow-hidden p-5 xs:p-10">
+      <div
+        class="h-24 shadow-lg border border-stone-300 border-solid mb-10 p-5 flex items-center justify-between"
       >
-        <app-product
-          *ngFor="let product of fetchedProducts; let index = index"
-          [product]="product"
-        ></app-product>
-        <app-product
-          *ngFor="let product of fetchedProducts; let index = index"
-          [product]="product"
-        ></app-product>
-        <app-product
-          *ngFor="let product of fetchedProducts; let index = index"
-          [product]="product"
-        ></app-product>
-        <app-product
-          *ngFor="let product of fetchedProducts; let index = index"
-          [product]="product"
-        ></app-product>
-        <app-product
-          *ngFor="let product of fetchedProducts; let index = index"
-          [product]="product"
-        ></app-product>
-      </article>
+        <select
+          class="w-[110px] sm:w-[200px] px-5 py-3 border border-stone-400 bg-transparent appearance-none"
+          (change)="setSortBy($event)"
+        >
+          <option selected>Sort By</option>
+          <option value="price-asc">Price Ascending</option>
+          <option value="price-desc">Price Descending</option>
+          <option value="name-asc">Name Ascending</option>
+          <option value="name-desc">Name Descending</option>
+        </select>
+
+        <button
+          [mat-menu-trigger-for]="filtersMenu"
+          class="flex lg:hidden min-w-[110px] sm:w-[200px] items-center justify-center px-5 py-3 bg-yellow-500 text-slate-50"
+        >
+          Apply filters
+        </button>
+        <mat-menu
+          #filtersMenu="matMenu"
+          yPosition="below"
+          class="max-h-[300px] -z-5 scrollbar-thin lg:hidden"
+        >
+          <a (click)="$event.stopPropagation()">
+            <app-filtersmenu
+              (filtersObject)="applyFilters($event)"
+            ></app-filtersmenu>
+          </a>
+        </mat-menu>
+      </div>
+
+      <mat-progress-spinner
+        *ngIf="loading"
+        class="absolute left-1/2 -translate-x-1/2 mt-20"
+        color="#EAB308"
+        mode="indeterminate"
+      >
+      </mat-progress-spinner>
+
+      <div *ngIf="!loading">
+        <article
+          class="w-full grid grid-cols-1 lxs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 justify-evenly items-start gap-8 px-5 xs:px-0"
+          *ngIf="fetchedProducts"
+        >
+          <app-product
+            *ngFor="let product of productsOnPage; let index = index"
+            [product]="product"
+          ></app-product>
+          <app-product
+            *ngFor="let product of productsOnPage; let index = index"
+            [product]="product"
+          ></app-product>
+        </article>
+
+        <div *ngIf="!fetchedProducts || fetchedProducts.length === 0">
+          <h1>Sorry, we couldn't find the items you were looking for!</h1>
+          <h3>
+            It is either because of the lack of response from the server, or
+            because the filters you've chosen are mutually exclusive, or there
+            is no products with such combination of filters.
+          </h3>
+        </div>
+      </div>
+
+      <div
+        class="w-full mt-10 p-10 flex justify-center items-center gap-3"
+        *ngIf="numberOfPages && numberOfPages.length > 1"
+      >
+        <button
+          *ngFor="let page of numberOfPages; let index = index"
+          class="w-10 aspect-square flex justify-center items-center bg-slate-400 text-slate-50"
+          (click)="changePage(index + 1)"
+          [class.bg-slate-700]="activePage === index + 1"
+        >
+          {{ index + 1 }}
+        </button>
+      </div>
     </section>
   </div>
 </main>

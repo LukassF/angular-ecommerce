@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
+import { CartService } from "src/app/services/cart.service";
 import { StoreService } from "src/app/services/store.service";
 
 @Component({
@@ -8,10 +9,18 @@ import { StoreService } from "src/app/services/store.service";
   templateUrl: "./productinfo.component.html",
 })
 export class ProductinfoComponent implements OnInit, OnDestroy {
+  loading: boolean = false;
   id: string | undefined;
   productSubscription: Subscription | undefined;
   product: Product | undefined;
-  constructor(private route: ActivatedRoute, private storeS: StoreService) {}
+  size: string = "S";
+  quantity: number = 1;
+
+  constructor(
+    private route: ActivatedRoute,
+    private storeS: StoreService,
+    private cartS: CartService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((value) => {
@@ -23,9 +32,29 @@ export class ProductinfoComponent implements OnInit, OnDestroy {
   }
 
   getProduct(): void {
+    this.loading = true;
     this.productSubscription = this.storeS
       .getProductById(this.id as string)
-      .subscribe((_product) => (this.product = _product[0]));
+      .subscribe((_product) => {
+        this.product = _product[0];
+        this.loading = false;
+      });
+  }
+
+  changeSize(e: any) {
+    this.size = e.target.value;
+  }
+  setQuantity(e: any) {
+    this.quantity = Number(e.target.value);
+  }
+
+  onAddToCart(): void {
+    if (this.product)
+      this.cartS.addToCart({
+        ...this.product,
+        quantity: this.quantity,
+        size: this.size,
+      });
   }
 
   ngOnDestroy(): void {

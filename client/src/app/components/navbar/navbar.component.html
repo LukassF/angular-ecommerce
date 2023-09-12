@@ -34,10 +34,16 @@
     >
     <a
       routerLink="/cart"
-      class="hover:text-yellow-500 after:w-1/2 after:h-1 after:rounded-full after:absolute after:bg-yellow-500 after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 transition-all after:transition-all after:origin-left"
+      class="relative hover:text-yellow-500 after:w-1/2 after:h-1 after:rounded-full after:absolute after:bg-yellow-500 after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 transition-all after:transition-all after:origin-left"
       routerLinkActive="!text-yellow-500"
     >
       <mat-icon> shopping_cart </mat-icon>
+      <div
+        *ngIf="quantity > 0"
+        class="absolute w-5 h-5 aspect-square rounded-full bg-red-600 text-slate-50 text-[10px] flex justify-center items-center -right-2 -top-2"
+      >
+        {{ quantity }}
+      </div>
     </a>
   </div>
 </nav>

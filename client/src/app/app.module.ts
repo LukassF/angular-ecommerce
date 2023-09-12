@@ -22,7 +22,14 @@ import { ContactformComponent } from "./pages/contact/components/contactform/con
 import { ProductinfoComponent } from "./pages/productinfo/productinfo.component";
 import { StoreService } from "./services/store.service";
 import { HttpClientModule } from "@angular/common/http";
-import { FiltersmenuComponent } from './pages/shop/components/filtersmenu/filtersmenu.component';
+import { FiltersmenuComponent } from "./pages/shop/components/filtersmenu/filtersmenu.component";
+import { MatMenuModule } from "@angular/material/menu";
+import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { CartService } from "./services/cart.service";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CartproductComponent } from './pages/cart/components/cartproduct/cartproduct.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +49,7 @@ import { FiltersmenuComponent } from './pages/shop/components/filtersmenu/filter
     ContactformComponent,
     ProductinfoComponent,
     FiltersmenuComponent,
+    CartproductComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +58,13 @@ import { FiltersmenuComponent } from './pages/shop/components/filtersmenu/filter
     MatIconModule,
     MatBadgeModule,
     HttpClientModule,
+    MatMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
-  providers: [StoreService],
+  providers: [StoreService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
