@@ -1,27 +1,12 @@
-# Angular E-commerce
+# Angular E-commerce(https://angular-ecommerce-sand.vercel.app/home)
 ## Table of contents
 * [General info](#general-info)
-* [Steps to run](#steps-to-run)
 * [Technologies](#technologies)
 * [Visualisation](#visualisation)
 
 
 ## General info
 The Angular E-commerce website, is, as could be inferred, an app mimicking the appearance,functionality and purpouse of a typical e-commerce website. This one specificaly is oriented around clothes. The functionalities range from browsing a wide array of products, selecting ones the customer desires to purchase, and proceeding with the checkout. The client side of an app is built with Angular, the serverside code however is written in Express JS.
-
-## Steps to run
-Below listed are the steps required for the testing of the app on your device.
-
-Step 1. Download zip of the code in this repo and unpack it or fork and clone the repo.
-
-Step 2. Open a terminal, go to the folder with the unpacked code and run 'cd server' then in the server subfolder run 'npm install -y'.
-
-Step 3. After the server package.json is installed run 'npm start'.
-
-Step 4. Open another terminal and run 'cd client' then in the client subfolder run 'npm install -y' again.
-
-Step 5. After the client package.json is installed run 'npm start'.
-
 
 
 ## Technologies
