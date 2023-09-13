@@ -3,12 +3,7 @@ const router = express.Router();
 require("dotenv/config");
 const { createClient } = require("@supabase/supabase-js");
 
-const supabase = createClient(
-  process.env.PROJECT_URL,
-  process.env.API_KEY
-  // "https://yvducvsdtojidzouvfwb.supabase.co",
-  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2ZHVjdnNkdG9qaWR6b3V2ZndiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQzNjQyNTgsImV4cCI6MjAwOTk0MDI1OH0.57aIDX2cUukWEDnvexDABXVZpnt3ZIBDCpAJFbkYBko"
-);
+const supabase = createClient(process.env.PROJECT_URL, process.env.API_KEY);
 
 router.get("/", async (req, res) => {
   const filters = req.query.filters ? req.query.filters.split(",") : ["all"];
