@@ -66,8 +66,8 @@ payments.post("/", async (req, res, next) => {
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: "http://localhost:5000/success.html",
-      cancel_url: "http://localhost:5000/cancel.html",
+      success_url: "https://ngecommerce.onrender.com/success.html",
+      cancel_url: "https://ngecommerce.onrender.com/cancel.html",
     });
 
     res.status(200).json(session);
