@@ -8,8 +8,8 @@
 server/.env
 
 # Node
-client/node_modules
-server/node_modules
+frontend/node_modules
+backend/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -23,7 +23,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-client/.vscode
+frontend/.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -31,7 +31,7 @@ client/.vscode
 .history/*
 
 # Miscellaneous
-client/.angular/cache
+frontend/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
