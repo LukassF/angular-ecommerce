@@ -67,16 +67,12 @@
             *ngFor="let product of productsOnPage; let index = index"
             [product]="product"
           ></app-product>
-          <app-product
-            *ngFor="let product of productsOnPage; let index = index"
-            [product]="product"
-          ></app-product>
         </article>
 
         <div *ngIf="!fetchedProducts || fetchedProducts.length === 0">
           <h1>Sorry, we couldn't find the items you were looking for!</h1>
           <h3>
-            It is either because of the lack of response from the server, or
+            It is either because of the lack of response from the server,
             because the filters you've chosen are mutually exclusive, or there
             is no products with such combination of filters.
           </h3>

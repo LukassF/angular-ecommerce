@@ -6,13 +6,21 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class CartService {
-  cart = new BehaviorSubject<Cart>({ items: [] });
+  cart = new BehaviorSubject<Cart>(
+    window.localStorage.getItem("cart")
+      ? JSON.parse(window.localStorage.getItem("cart") as string)
+      : { items: [] }
+  );
   totalQuantity: number = 0;
   totalPrice: number = 0;
 
-  constructor(private snackbar: MatSnackBar) {}
+  constructor(private snackbar: MatSnackBar) {
+    this.getTotalPrice(this.cart.value.items);
+    this.getTotalQuantity(this.cart.value.items);
+  }
 
   addToCart(product: CartItem): void {
+    console.log(this.cart.value);
     const items = [...this.cart.value.items];
 
     const itemInCart = items.find(
@@ -33,6 +41,7 @@ export class CartService {
     this.getTotalPrice(items);
 
     this.cart.next({ items });
+    window.localStorage.setItem("cart", JSON.stringify({ items }));
   }
 
   changeQuantity(product: CartItem, quantity: number) {
@@ -48,6 +57,7 @@ export class CartService {
     this.getTotalPrice(items);
 
     this.cart.next({ items });
+    window.localStorage.setItem("cart", JSON.stringify({ items }));
   }
 
   changeSize(product: CartItem, size: string) {
@@ -63,6 +73,7 @@ export class CartService {
     this.getTotalPrice(items);
 
     this.cart.next({ items });
+    window.localStorage.setItem("cart", JSON.stringify({ items }));
   }
 
   removeFromCart(product: CartItem) {
@@ -77,6 +88,18 @@ export class CartService {
     this.getTotalPrice(items);
 
     this.cart.next({ items });
+    this.snackbar.open("Added removed from cart.", "OK", { duration: 3000 });
+    window.localStorage.setItem("cart", JSON.stringify({ items }));
+  }
+
+  clearCart() {
+    this.cart.next({ items: [] });
+    window.localStorage.removeItem("cart");
+
+    this.getTotalQuantity(this.cart.value.items);
+    this.getTotalPrice(this.cart.value.items);
+
+    this.snackbar.open("Cart cleared.", "OK", { duration: 3000 });
   }
 
   getTotalQuantity(items: CartItem[]) {

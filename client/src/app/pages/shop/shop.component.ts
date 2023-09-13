@@ -2,7 +2,7 @@ import { Subscription } from "rxjs";
 import { Component, OnDestroy, OnInit, HostListener } from "@angular/core";
 import { StoreService } from "src/app/services/store.service";
 
-const PER_PAGE = 4;
+const PER_PAGE = 8;
 
 @Component({
   selector: "app-shop",
@@ -10,6 +10,7 @@ const PER_PAGE = 4;
 })
 export class ShopComponent implements OnInit, OnDestroy {
   loading: boolean = false;
+  width: number = window.innerWidth;
   fetchedProducts: Product[] | undefined;
   productsOnPage: Product[] | undefined;
   productsSubscription: Subscription | undefined;
@@ -17,6 +18,9 @@ export class ShopComponent implements OnInit, OnDestroy {
   activePage: number = 1;
   constructor(private storeS: StoreService) {}
   @HostListener("window:resize", ["$event"])
+  onResize() {
+    this.width = window.innerWidth;
+  }
   ngOnInit(): void {
     this.getShopProducts();
   }
@@ -27,10 +31,6 @@ export class ShopComponent implements OnInit, OnDestroy {
       (this.activePage - 1) * PER_PAGE,
       this.activePage * PER_PAGE
     );
-  }
-
-  public get width() {
-    return window.innerWidth;
   }
 
   getShopProducts() {

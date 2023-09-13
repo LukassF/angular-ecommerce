@@ -38,7 +38,7 @@ export class CartproductComponent implements OnChanges {
   navigateToDetails(e: any) {
     console.log(e.target.id);
     if (e.target.id !== "not-link")
-      this.router.navigate(["shop/product", `/1`]);
+      this.router.navigate(["shop/product", `/${this.item?.id}`]);
   }
 
   ngOnChanges(changes: any): void {

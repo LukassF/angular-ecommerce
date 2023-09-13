@@ -29,7 +29,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { CartService } from "./services/cart.service";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { CartproductComponent } from './pages/cart/components/cartproduct/cartproduct.component';
+import { CartproductComponent } from "./pages/cart/components/cartproduct/cartproduct.component";
 
 @NgModule({
   declarations: [

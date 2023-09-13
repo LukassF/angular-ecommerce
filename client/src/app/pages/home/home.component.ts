@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
+import { CartService } from "src/app/services/cart.service";
 import { StoreService } from "src/app/services/store.service";
 
 @Component({
@@ -11,10 +13,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   newestProducts: Product[] | undefined;
   productsSubscription: Subscription | undefined;
 
-  constructor(private storeS: StoreService) {}
+  constructor(
+    private storeS: StoreService,
+    private route: ActivatedRoute,
+    private cartS: CartService
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
+    //@ts-ignore
+    if (this.route.queryParams._value.success === "true")
+      this.cartS.clearCart();
   }
 
   getProducts(): void {
@@ -25,8 +34,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.newestProducts = _products
           .sort(
             (a, b) =>
-              new Date(a.created_at).getTime() -
-              new Date(b.created_at).getTime()
+              new Date(b.created_at).getTime() -
+              new Date(a.created_at).getTime()
           )
           .slice(0, 10);
       });
