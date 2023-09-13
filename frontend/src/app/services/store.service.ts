@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-const STORE_URL = "http://localhost:5000/api";
+const STORE_URL = "https://ngecommerce.onrender.com/api";
 
 @Injectable({
   providedIn: "root",

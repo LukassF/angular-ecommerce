@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
 
   proceedToCheckout() {
     this.httpClient
-      .post("http://localhost:5000/api/checkout", {
+      .post("https://ngecommerce.onrender.com/api/checkout", {
         items: this.cartS.cart.value.items,
       })
       .subscribe(async (res: any) => {
