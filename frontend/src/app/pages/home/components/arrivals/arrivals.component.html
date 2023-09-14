@@ -31,7 +31,7 @@
     </div>
 
     <article
-      *ngIf="fetchedProducts"
+      *ngIf="fetchedProducts && !isLoading"
       class="w-full grid grid-cols-1 lxs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-evenly items-start pt-10 md:pt-20 gap-8"
     >
       <app-product
@@ -39,5 +39,13 @@
         [product]="product"
       ></app-product>
     </article>
+
+    <mat-progress-spinner
+      *ngIf="isLoading"
+      class="absolute left-1/2 -translate-x-1/2 mt-20"
+      color="#EAB308"
+      mode="indeterminate"
+    >
+    </mat-progress-spinner>
   </article>
 </section>
