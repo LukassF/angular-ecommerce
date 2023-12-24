@@ -13,6 +13,7 @@ module.exports = {
         productInfo: "2fr 3fr",
       },
       screens: {
+        xxs: "380px",
         xs: "450px",
         lxs: "520px",
       },

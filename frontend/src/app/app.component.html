@@ -4,20 +4,20 @@
 
 <div
   id="alert"
-  class="fixed w-screen h-screen bg-stone-900 bg-opacity-40 z-30 left-0 top-0 flex justify-center items-center transition-all duration-500"
+  class="fixed w-screen h-screen bg-stone-900 bg-opacity-40 z-30 left-0 top-0 flex justify-center items-center"
 >
-  <div class="bg-stone-100 p-8 z-30 max-w-[550px] rounded-md flex flex-col">
+  <div class="m-3 bg-stone-100 p-8 z-30 max-w-[550px] rounded-md flex flex-col">
     <h1>Please start the server below!</h1>
     <p class="text-xs">
       Due to the fact that the server is hosted using a free plan, it scales
-      down after inactivity, so to make sure everything loads correctly, refresh
-      it by clicking the button!
+      down after inactivity, so to make sure everything loads correctly, click
+      the button, and wait for the opened page to load!
     </p>
     <button
       (click)="openServer()"
       class="bg-slate-500 text-slate-100 rounded-md px-16 py-3 mt-6 hover:bg-slate-600 transition-all ml-auto"
     >
-      Confirm
+      Refresh
     </button>
   </div>
 </div>
